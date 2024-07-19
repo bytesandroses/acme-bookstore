@@ -6,8 +6,9 @@
 @inject IStringLocalizer<BookStoreResource> L
 @section scripts
 {
-    <abp-script src="/Pages/Books/Index.js" />
+    <abp-script src="/Pages/Books/Index.js"/>
 }
+
 <abp-card>
     <abp-card-header>
         <abp-row>
@@ -22,5 +23,7 @@
             </abp-column>
         </abp-row>
     </abp-card-header>
-
+    <abp-card-body>
+        <abp-table striped-rows="true" id="BooksTable"></abp-table>
+    </abp-card-body>
 </abp-card>
