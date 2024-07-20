@@ -26,6 +26,7 @@ $(function () {
                                 },
                                 {
                                     text: l('Delete'),
+                                    visible: abp.auth.isGranted('BookStore.Books.Delete'),
                                     confirmMessage: function (data) {
                                         return l(
                                             'BookDeletionConfirmationMessage',
