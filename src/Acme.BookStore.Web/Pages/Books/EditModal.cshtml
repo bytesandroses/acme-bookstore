@@ -1,35 +1,20 @@
-﻿using System;
-using System.Threading.Tasks;
-using Acme.BookStore.Books;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Acme.BookStore.Web.Pages.Books;
-
-public class EditModalModel : BookStorePageModel
-{
-    [HiddenInput]
-    [BindProperty(SupportsGet = true)]
-    public Guid Id { get; set; }
-
-    [BindProperty]
-    public CreateUpdateBookDto Book { get; set; }
-
-    private readonly IBookAppService _bookAppService;
-
-    public EditModalModel(IBookAppService bookAppService)
-    {
-        _bookAppService = bookAppService;
-    }
-
-    public async Task OnGetAsync()
-    {
-        var bookDto = await _bookAppService.GetAsync(Id);
-        Book = ObjectMapper.Map<BookDto, CreateUpdateBookDto>(bookDto);
-    }
-
-    public async Task<IActionResult> OnPostAsync()
-    {
-        await _bookAppService.UpdateAsync(Id, Book);
-        return NoContent();
-    }
+﻿@page
+@using Acme.BookStore.Localization
+@using Acme.BookStore.Web.Pages.Books
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@model EditModalModel
+@inject IStringLocalizer<BookStoreResource> L
+@{
+    Layout = null;
 }
+<abp-dynamic-form abp-model="Book" asp-page="/Books/EditModal">
+    <abp-modal>
+        <abp-modal-header title="@L["Update"].Value"></abp-modal-header>
+        <abp-modal-body>
+            <abp-input asp-for="Id" />
+            <abp-form-content />
+        </abp-modal-body>
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</abp-dynamic-form>
