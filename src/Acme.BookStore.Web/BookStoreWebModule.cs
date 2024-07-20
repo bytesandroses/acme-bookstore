@@ -11,6 +11,7 @@ using Acme.BookStore.MultiTenancy;
 using Acme.BookStore.Web.Menus;
 using Acme.BookStore.Permissions;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using OpenIddict.Validation.AspNetCore;
 using Volo.Abp;
 using Volo.Abp.Account.Web;
