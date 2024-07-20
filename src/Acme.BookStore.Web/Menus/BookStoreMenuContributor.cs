@@ -2,6 +2,7 @@
 using Acme.BookStore.Localization;
 using Acme.BookStore.Permissions;
 using Acme.BookStore.MultiTenancy;
+using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Identity.Web.Navigation;
 using Volo.Abp.SettingManagement.Web.Navigation;
 using Volo.Abp.TenantManagement.Web.Navigation;
