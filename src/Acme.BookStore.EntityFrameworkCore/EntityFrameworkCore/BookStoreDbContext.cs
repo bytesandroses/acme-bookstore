@@ -13,6 +13,7 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using Acme.BookStore.Authors;
 using Acme.BookStore.Books;
 
 namespace Acme.BookStore.EntityFrameworkCore;
@@ -88,7 +89,7 @@ public class BookStoreDbContext :
             b.ConfigureByConvention(); //auto configure for the base class props
             b.Property(x => x.Name).IsRequired().HasMaxLength(128);
         });
-        
+
         builder.Entity<Author>(b =>
         {
             b.ToTable(BookStoreConsts.DbTablePrefix + "Authors",
@@ -102,6 +103,5 @@ public class BookStoreDbContext :
 
             b.HasIndex(x => x.Name);
         });
-
     }
 }
