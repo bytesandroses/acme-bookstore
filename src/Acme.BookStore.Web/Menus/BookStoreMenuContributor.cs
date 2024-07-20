@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Acme.BookStore.Localization;
+using Acme.BookStore.Permissions;
 using Acme.BookStore.MultiTenancy;
 using Volo.Abp.Identity.Web.Navigation;
 using Volo.Abp.SettingManagement.Web.Navigation;
@@ -56,10 +57,9 @@ public class BookStoreMenuContributor : IMenuContributor
                     "BooksStore.Books",
                     l["Menu:Books"],
                     url: "/Books"
-                )
+                ).RequirePermissions(BookStorePermissions.Books.Default)
             )
         );
-
 
         return Task.CompletedTask;
     }
